@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf8 -*-
 
+"""
+Unit test for the functions of the masking module
+"""
 
 #######################################
 # Imports
 #######################################
 from masking import mask_str, mask_numeric
 import unittest
-
 
 
 class TESTCSV(unittest.TestCase):

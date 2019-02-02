@@ -26,14 +26,14 @@ ID | Nombre          | Email                          | Facturado  | Localidad
 Además, produce un informe para las columnas Nombre y Facturado
 
 ```
-Report for str column Nombre
+Report for str column 'Nombre'
 * avg 13.6
 * max 15
 * min 11
 ```
 
 ```
-Report for numeric column Facturado
+Report for numeric column 'Facturado'
 * avg 25100.0675
 * max 53000.0
 * min 12400.27
@@ -63,3 +63,15 @@ El código se divide en módulos según los siguientes archivos:
 Se ha incluido un pequeño test unitario para el modulo de masking
 
 `python3 ./test.py`
+
+
+# Notas
+
+El script tiene ciertas limitaciones, la más grave posiblemente es que
+el parsing del csv se hace de forma manual. Así que no soporta comas (',')
+dentro de las celdas con string. Debería haber utilizado el modulo built-in
+`csv`.
+
+He optado por mantener los valores nulos dentro en el masking the números.
+
+El código está comentado y tiene algún TODO en cosas que se podrían mejorar
