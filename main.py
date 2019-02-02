@@ -37,6 +37,10 @@ if __name__ == '__main__':
     doc = CSV.load("clientes.csv")
     print(doc)
 
+    # Reports
+    doc.report_str('Nombre')
+    doc.report_num('Facturado')
+
 
     doc.apply_str_masking(['Nombre', 'Email'])
     doc.apply_num_masking('Facturado')

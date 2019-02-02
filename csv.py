@@ -116,3 +116,30 @@ class CSV:
                 line = map(CSV.to_str, line)
                 line = ','.join(line)
                 f.write(line + '\n')
+
+
+
+    def report_str(self, column):
+        assert column in self.columns, "Invalid column"
+
+        lengths = [len(d[column]) for d in self.data]
+
+
+        print(f"Report for str column {column}")
+        print(f"* avg {sum(lengths)/len(lengths)}")
+        print(f"* max {max(lengths)}")
+        print(f"* min {min(lengths)}")
+
+
+
+
+    def report_num(self, column):
+        assert column in self.columns, "Invalid column"
+
+        numbers = [ float(d[column]) for d in self.data if not  d[column] is None ]
+        print(numbers)
+
+        print(f"Report for numeric column {column}")
+        print(f"* avg {sum(numbers)/len(numbers)}")
+        print(f"* max {max(numbers)}")
+        print(f"* min {min(numbers)}")
