@@ -10,6 +10,7 @@ Author: Javier
 # Imports
 #######################################
 import sys
+import re
 
 
 #######################################
@@ -34,7 +35,8 @@ def is_float_try(str):
         return False
 
 
-
+def str_mask(cell):
+    return re.sub('[a-zA-Z]', 'X', cell)
 
 
 #######################################
@@ -106,9 +108,30 @@ class CSV:
         return ""
 
 
-    def apply_masking(self, column):
+    def apply_str_masking(self, column):
 
-        pass
+        if type(column) is list:
+            for c in column:
+                self.apply_str_masking(c)
+            return
+
+        assert type(column) is str
+        assert column in self.columns, "Invalid column"
+
+        for data in self.data:
+            data[column] = str_mask(data[column])
+        
+    def apply_num_masking(self, column):
+
+        assert column in self.columns, "Invalid column"
+
+        numbers = [ d[column] for d in self.data if not  d[column] is None ]
+        average = sum( numbers ) / len(numbers)
+
+        for data in self.data:
+            if data[column] is None:
+                continue
+            data[column] = average
 
     def save(self, fname):
 
@@ -139,6 +162,9 @@ if __name__ == '__main__':
     doc = CSV.load("clientes.csv")
     print(doc)
 
+
+    doc.apply_str_masking(['Nombre', 'Email'])
+    doc.apply_num_masking('Facturado')
 
     # "Nombre”, “Email” y “Facturado
 
