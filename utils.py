@@ -26,7 +26,7 @@ def is_float_try(str):
 
 
 #######################################
-# Title func
+# Title function
 #######################################
 
 def title(msg, length=60, ch='='):

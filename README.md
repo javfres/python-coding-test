@@ -41,7 +41,7 @@ Report for numeric column 'Facturado'
 
 ## Instrucciones de ejecución
 
-El script se ha programado para la versión 3.6 de python
+El script se ha programado para la versión 3.6 de python.
 
 `python3 ./main.py`
 
@@ -51,7 +51,7 @@ El script se ha programado para la versión 3.6 de python
 El código se divide en módulos según los siguientes archivos:
 
 * `main.py`: Fichero principal
-* `csv.py`: Contine la clase CSV para leer, procesar y guardar ficheros CSV
+* `csv.py`: Contiene la clase CSV para leer, procesar y guardar ficheros CSV
 * `masking.py`: Modulo con las funciones de masking para cadenas y listas de números
 * `utils.py`: Utilidades extra usadas por el modulo csv
 * `test.py`: Pruebas
@@ -60,7 +60,8 @@ El código se divide en módulos según los siguientes archivos:
 
 ## Test
 
-Se ha incluido un pequeño test unitario para el modulo de masking
+Se ha incluido un pequeño test unitario para el modulo de masking.
+Ejecutar simplemente con:
 
 `python3 ./test.py`
 
@@ -73,5 +74,10 @@ dentro de las celdas con string. Debería haber utilizado el modulo built-in
 `csv`.
 
 He optado por mantener los valores nulos dentro en el masking the números.
+Habría que discutir si eso puede ser peligroso en un caso real.
 
-El código está comentado y tiene algún TODO en cosas que se podrían mejorar
+El código está comentado y tiene algún TODO en cosas que se podrían mejorar.
+
+
+
+

@@ -13,7 +13,7 @@ Author: Javier
 import sys
 my_py_version = (3,6)
 # The f-str already gives a hint this is for py3
-msg = f"This script was intented for Python {my_py_version}"
+msg = f"This script was intended for Python {my_py_version}"
 assert sys.version_info >= my_py_version, msg
         
 
@@ -45,13 +45,13 @@ if __name__ == '__main__':
     # Reports
     title("Showing the reports")
     
-    # Reports are printed to std, they should be returned for futher processing
-    # but for this test I believe it's good enougth
+    # Reports are printed to std, they should be returned for further processing
+    # but for this test I believe it's good enough
     doc.report_str('Nombre')
     doc.report_num('Facturado')
 
     # Masking
-    # the CSV uses the functiosn defined in masking.py
+    # the CSV uses the functions defined in masking.py
     title("Masking sensible data")
     doc.apply_str_masking(['Nombre', 'Email'])
     doc.apply_num_masking('Facturado')

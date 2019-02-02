@@ -65,7 +65,7 @@ class CSV:
 
         """
         This static method will transform a cell into its 'appropriate' type
-        NOTE: I'm suppossing: str, int, float and None
+        NOTE: I'm supposing: str, int, float and None
         """
 
         # Trim
@@ -172,7 +172,7 @@ class CSV:
     # Save the csv into a file
     def save(self, fname):
 
-        # Open the file for writting
+        # Open the file for writing
         with open(fname, 'w') as f:
 
             # Write the header
