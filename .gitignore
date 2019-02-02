@@ -2,3 +2,6 @@
 
 # Ignore my output
 clientes_masked.csv
+
+# Ignore compiled files
+*.pyc
