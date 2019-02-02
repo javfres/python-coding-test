@@ -4,7 +4,8 @@
 #######################################
 # Imports
 #######################################
-from utils import is_float_try, str_mask
+from utils import is_float_try
+from masking import mask_str, mask_numeric
 
 
 #######################################
@@ -70,10 +71,45 @@ class CSV:
             return ''
         return str(val)
 
-
-
     def __str__(self):
-        return ""
+        
+        widths = []
+
+        for col in self.columns:
+            lst = self.get_column_as_list(col, True)
+            width = max([ len(str(row)) for row in lst])
+            widths.append(width)
+
+        res = ""
+
+        header = " | ".join( [f"{c:{widths[i]}}" for i,c in enumerate(self.columns) ] ) 
+        res += header + '\n'
+
+        for row in self.data:
+            line = " | ".join( [f"{str(row[c]):{widths[i]}}" for i,c in enumerate(self.columns) ] ) 
+            res += line + '\n'
+
+        return res;
+
+
+
+    def get_column_as_list(self, column, with_header=False):
+        assert column in self.columns, "Invalid column"
+
+        header = []
+        if with_header:
+            header = [column]
+
+        return header + [ d[column] for d in self.data ]
+
+
+    def set_column_from_list(self, column, lst):
+        assert column in self.columns, "Invalid column"
+        assert len(lst) == len(self.data)
+
+        for i,val in enumerate(lst):
+            self.data[i][column] = val
+        
 
 
     def apply_str_masking(self, column):
@@ -87,19 +123,16 @@ class CSV:
         assert column in self.columns, "Invalid column"
 
         for data in self.data:
-            data[column] = str_mask(data[column])
+            data[column] = mask_str(data[column])
         
     def apply_num_masking(self, column):
 
         assert column in self.columns, "Invalid column"
 
-        numbers = [ d[column] for d in self.data if not  d[column] is None ]
-        average = sum( numbers ) / len(numbers)
+        lst = self.get_column_as_list(column)
+        lst_masked = mask_numeric(lst)
+        self.set_column_from_list(column, lst_masked)
 
-        for data in self.data:
-            if data[column] is None:
-                continue
-            data[column] = average
 
     def save(self, fname):
 

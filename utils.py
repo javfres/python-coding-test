@@ -18,7 +18,3 @@ def is_float_try(str):
         return True
     except ValueError:
         return False
-
-
-def str_mask(cell):
-    return re.sub('[a-zA-Z]', 'X', cell)
