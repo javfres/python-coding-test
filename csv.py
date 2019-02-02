@@ -86,7 +86,7 @@ class CSV:
         res += header + '\n'
 
         for row in self.data:
-            line = " | ".join( [f"{str(row[c]):{widths[i]}}" for i,c in enumerate(self.columns) ] ) 
+            line = " | ".join( [f"{CSV.to_str(row[c]):{widths[i]}}" for i,c in enumerate(self.columns) ] ) 
             res += line + '\n'
 
         return res;
