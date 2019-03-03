@@ -1,7 +1,9 @@
 # CSV Masking
 
-Script python para ocultar datos sensibles en un fichero CSV.
-El script leer un fichero CSV del tipo:
+This is a python coding test I did in about 3 hours.
+
+This script is used to hide sensible data from a CSV file.
+The CVS has the following format:
 
 ```
 ID | Nombre          | Email                          | Facturado | Localidad 
@@ -12,7 +14,9 @@ ID | Nombre          | Email                          | Facturado | Localidad
 5  | Fernando Martin | fm@mail.com                    | 53000     | Soria     
 ```
 
-Y produce otro fichero eliminando los datos sensibles
+And it produces another one removing the name and email columns with X characters
+and the numeric columns with its average value.
+Example:
 
 ```
 ID | Nombre          | Email                          | Facturado  | Localidad 
@@ -23,7 +27,7 @@ ID | Nombre          | Email                          | Facturado  | Localidad
 5  | XXXXXXXX XXXXXX | XX@XXXX.XXX                    | 25100.0675 | Soria     
 ```
 
-Además, produce un informe para las columnas Nombre y Facturado
+Moreover, it produces a report for the 'Nombre' and 'Facturado' columns.
 
 ```
 Report for str column 'Nombre'
@@ -39,44 +43,43 @@ Report for numeric column 'Facturado'
 * min 12400.27
 ```
 
-## Instrucciones de ejecución
+## Usage instructions
 
-El script se ha programado para la versión 3.6 de python.
+This script was made for python 3.6
 
 `python3 ./main.py`
 
 
-## Descripción de los archivos
+## Code files
 
-El código se divide en módulos según los siguientes archivos:
+The code has the following files
 
-* `main.py`: Fichero principal
-* `csv.py`: Contiene la clase CSV para leer, procesar y guardar ficheros CSV
-* `masking.py`: Modulo con las funciones de masking para cadenas y listas de números
-* `utils.py`: Utilidades extra usadas por el modulo csv
-* `test.py`: Pruebas
+* `main.py`: Main script
+* `csv.py`:  CSV class that reads, process, and saves CSV files
+* `masking.py`: Marsking module for strings and numbers
+* `utils.py`: Extra utilities used for the csv module
+* `test.py`: Unit test
 
 
 
 ## Test
 
-Se ha incluido un pequeño test unitario para el modulo de masking.
-Ejecutar simplemente con:
+I have included a small unit test for the masking module.
+Usage:
 
 `python3 ./test.py`
 
 
-# Notas
+# Notes
 
-El script tiene ciertas limitaciones, la más grave posiblemente es que
-el parsing del csv se hace de forma manual. Así que no soporta comas (',')
-dentro de las celdas con string. Debería haber utilizado el modulo built-in
-`csv`.
+This script has several limitations, the main on is that the
+csv parsing is manual. So, it doesn't support commas (',')
+inside the string cells. I should be used the built-in csv module.
 
-He optado por mantener los valores nulos dentro en el masking the números.
-Habría que discutir si eso puede ser peligroso en un caso real.
+I have chosen to keep the null values when masking the numbers.
+It would be necessary to discuss if that can be dangerous in a real case.
 
-El código está comentado y tiene algún TODO en cosas que se podrían mejorar.
+The code is commented and has TODO in things that could be improved.
 
 
 
